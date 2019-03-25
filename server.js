@@ -25,7 +25,7 @@ const config = require('./config');
 mongoose.connect(config.MONGODB_URL, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const InputSchema = new Schema({
-    img: Buffer
+    img: String
 });
 const HelloModel = mongoose.model('input', InputSchema)
 
@@ -86,6 +86,7 @@ app.get("/api", challengeAuth, (req, res) => {
 app.post("/api", challengeAuth, (req, res) => {
     console.log(req.body);
     HelloModel.create(req.body, (err, doc)=> {
+        console.log(doc);
         res.send(doc);
     })
 });
