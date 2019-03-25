@@ -84,7 +84,7 @@
                 let newCtx = newCanvas.getContext('2d');
                 let imgData = newCtx.createImageData(320, 240);
 
-                for(let p = 0; p < imageData.data.length; p += 4){
+                for(let p = 0; p < imgData.data.length; p += 4){
                     imgData.data[p] = pixels.img.data[p];
                     imgData.data[p + 1] = pixels.img.data[p + 1];
                     imgData.data[p + 2] = pixels.img.data[p + 2];
