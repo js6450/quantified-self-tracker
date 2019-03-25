@@ -73,7 +73,7 @@ app.get("/", challengeAuth, (req, res)=> {
   * GET /api
   */
 app.get("/api", challengeAuth, (req, res) => {
-    console.log(req.body)
+   // console.log(req.body)
     
     HelloModel.find({}, (err, doc)=> {
         res.send(doc);
@@ -84,7 +84,7 @@ app.get("/api", challengeAuth, (req, res) => {
   * POST /api
   */
 app.post("/api", challengeAuth, (req, res) => {
-    console.log(req.body);
+    console.log('received: ' + req.body);
     HelloModel.create(req.body, (err, doc)=> {
         //console.log(doc);
         res.send(doc);
