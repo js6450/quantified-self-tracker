@@ -34,26 +34,13 @@
                     console.log(result);
                     hellos = result;
 
+
+
                     for(let i = 0; i < hellos.length; i++){
 
                         console.log('adding new canvas');
 
-                        let newCanvas = document.createElement('canvas');
-                        newCanvas.width = 320;
-                        newCanvas.height = 240;
-                        let newCtx = newCanvas.getContext('2d');
-                        let imgData = newCtx.createImageData(320, 240);
-
-                        for(let p = 0; p < imageData.data.length; p += 4){
-                            imgData.data[p] = hellos[i].img.data[p];
-                            imgData.data[p + 1] = hellos[i].img.data[p + 1];
-                            imgData.data[p + 2] = hellos[i].img.data[p + 2];
-                            imgData.data[p + 3] = 255;
-                        }
-
-                        newCtx.putImageData(imgData, 0, 0);
-
-                        document.body.appendChild(newCanvas);
+                        imgToCanvas(hellos[i]);
                     }
                     $counter.innerHTML = `${hellos.length} Hellos in the DB`
                 }).catch(err => {
@@ -88,6 +75,25 @@
                 }).catch(err =>{
                     return err
                 })
+            }
+
+            function imgToCanvas(pixels){
+                let newCanvas = document.createElement('canvas');
+                newCanvas.width = 320;
+                newCanvas.height = 240;
+                let newCtx = newCanvas.getContext('2d');
+                let imgData = newCtx.createImageData(320, 240);
+
+                for(let p = 0; p < imageData.data.length; p += 4){
+                    imgData.data[p] = pixels.img.data[p];
+                    imgData.data[p + 1] = pixels.img.data[p + 1];
+                    imgData.data[p + 2] = pixels.img.data[p + 2];
+                    imgData.data[p + 3] = pixels.img.data[p + 3];
+                }
+
+                newCtx.putImageData(imgData, 0, 0);
+
+                document.body.appendChild(newCanvas);
             }
 
             
