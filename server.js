@@ -2,11 +2,22 @@ const express = require('express');
 const logger = require('morgan');
 const http = require('http');
 const path = require('path');
+// const multer = require('multer');
 
 const basicAuth = require('express-basic-auth');
 const mongoose = require('mongoose');
 // const Datastore = require('nedb');
 const app = express();
+// const router = express.Router();
+
+// const storage = multer.diskStorage({
+//     destination: function(req, res, cb){
+//         cb(null, 'uploads/');
+//     }
+// });
+//
+// const upload = multer({storage: storage});
+
 
 /****************************
  * your config will grab your approved USERNAME and PASSWORD from your .env
@@ -25,7 +36,7 @@ const config = require('./config');
 mongoose.connect(config.MONGODB_URL, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const InputSchema = new Schema({
-    img: Buffer
+    img: {data: Buffer, contentType: String}
 });
 const HelloModel = mongoose.model('input', InputSchema)
 
