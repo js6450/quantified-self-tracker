@@ -1,107 +1,33 @@
 <html>
     <head>
-        <title>Simple Express Basic Auth Demo</title>
-        <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+        <title>Self Tracker from My Phone</title>
     </head>
-    <body class="code lh-copy w-100 h-100 flex flex-column justify-center items-center">
-        <h1 class="f1 headline" id="helloCounter"></h1>
-        <button class="bn bg-yellow navy f2 pa4 shadow-5 b" id="addHelloBtn">Add a hello!</button>
+    <body>
 
         <script>
-            let hellos; // will be an array of hellos
-
-            // getting our dom elements - the $variableName is a convention to indicate a DOM selection - a shoutout to JQUERY
-            const $counter = document.querySelector("#helloCounter");
-            const $addHelloBtn = document.querySelector("#addHelloBtn");
+            let inputs;
             
             /**
              * When the window loads, build the page
              */
             window.onload = function(e){
-                // initialize the app with the hello count
-                getHellos();
-                // add an event listener to the button on click to POST to the db
-                $addHelloBtn.addEventListener('click', addHelloBtn);
-            }
+                getInputs();
+            };
 
-            /**
-             * GET hellos from the database
-             */
-            function getHellos(){
+            function getInputs(){
                 fetch('/api').then(result => {
                     return result.json();
                 }).then(result => {
-                    console.log(result);
-                    hellos = result;
+                    //console.log(result);
+                    inputs = result;
 
-                    for(let i = 0; i < hellos.length; i++){
-                        baseToImage(hellos[i].img);
+                    for(let i = 0; i < inputs.length; i++){
+                        baseToImage(inputs[i].img);
                     }
-
-                    $counter.innerHTML = `${hellos.length} Hellos in the DB`
                 }).catch(err => {
                     return err;
                 })
             }
-
-            /**
-             * POST hellos to the database
-             */
-            function addHelloBtn(e){
-                console.log('clicked!')
-                const message = {message:"hello"}
-                
-                const options ={
-                    method: "POST",
-                    redirect: "follow",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body:JSON.stringify(message)
-                }
-                
-                fetch('/api', options).then(result => {
-                    return result.json()
-                }).then(result => {
-                    console.log(result)
-                    // hellos.push(result);
-                    // $counter.innerHTML = `${hellos.length} Hellos in the DB`
-                    getHellos();
-                    // window.location = "/"
-                }).catch(err =>{
-                    return err
-                })
-            }
-
-            // function imgToCanvas(pixels){
-            //     let newCanvas = document.createElement('canvas');
-            //     newCanvas.width = 320;
-            //     newCanvas.height = 240;
-            //     let newCtx = newCanvas.getContext('2d');
-            //     let imgData = newCtx.createImageData(320, 240);
-            //
-            //     let pixelData = pixels.img.data;
-            //
-            //     let imgIndex = 0;
-            //     for(let p = 0; p < pixelData.length; p += 3){
-            //         imgData.data[imgIndex] = pixels.img.data[p];
-            //         imgData.data[imgIndex + 1] = pixels.img.data[p + 1];
-            //         imgData.data[imgIndex + 2] = pixels.img.data[p + 2];
-            //         imgData.data[imgIndex + 3] = 255;
-            //         imgIndex += 4;
-            //     }
-            //
-            //     newCtx.putImageData(imgData, 0, 0);
-            //
-            //     document.body.appendChild(newCanvas);
-            // }
-            //
-            // function arrayBufferToBase64(buffer) {
-            //     var binary = '';
-            //     var bytes = [].slice.call(new Uint8Array(buffer));
-            //     bytes.forEach((b) => binary += String.fromCharCode(b));
-            //     return window.btoa(binary);
-            // };
 
             function baseToImage(bString){
                 let img = document.createElement('img');
