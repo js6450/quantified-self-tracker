@@ -84,7 +84,8 @@ app.get("/api", challengeAuth, (req, res) => {
   * POST /api
   */
 app.post("/api", challengeAuth, (req, res) => {
-    console.log('received: ' + req.body);
+    console.log('received: ');
+    console.log(req.body);
     HelloModel.create(req.body, (err, doc)=> {
         //console.log(doc);
         res.send(doc);
