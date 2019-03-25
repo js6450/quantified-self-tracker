@@ -34,6 +34,11 @@
                     console.log(result);
                     hellos = result;
 
+                    for(let i = 0; i < hellos.length; i++){
+                        let baseString = arrayBufferToBase64(hellos[i].img.data);
+                        baseToImage(baseString);
+                    }
+
                     $counter.innerHTML = `${hellos.length} Hellos in the DB`
                 }).catch(err => {
                     return err;
@@ -98,6 +103,14 @@
                 bytes.forEach((b) => binary += String.fromCharCode(b));
                 return window.btoa(binary);
             };
+
+            function baseToImage(bString){
+                let img = document.createElement('img');
+                img.width = 320;
+                img.height = 240;
+                img.src = "data:image/jpeg;base64," + bString;
+                document.body.appendChild(img);
+            }
 
             
         </script>
