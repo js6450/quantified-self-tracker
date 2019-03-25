@@ -88,7 +88,7 @@
                     imgData.data[p] = pixels.img.data[p];
                     imgData.data[p + 1] = pixels.img.data[p + 1];
                     imgData.data[p + 2] = pixels.img.data[p + 2];
-                    imgData.data[p + 3] = pixels.img.data[p + 3];
+                    imgData.data[p + 3] = 255;
                 }
 
                 newCtx.putImageData(imgData, 0, 0);
