@@ -22,13 +22,6 @@
                 getHellos();
                 // add an event listener to the button on click to POST to the db
                 $addHelloBtn.addEventListener('click', addHelloBtn);
-
-                for(let i = 0; i < hellos.length; i++){
-
-                    console.log('adding new canvas');
-
-                    imgToCanvas(hellos[i]);
-                }
             }
 
             /**
@@ -98,6 +91,13 @@
 
                 document.body.appendChild(newCanvas);
             }
+
+            function arrayBufferToBase64(buffer) {
+                var binary = '';
+                var bytes = [].slice.call(new Uint8Array(buffer));
+                bytes.forEach((b) => binary += String.fromCharCode(b));
+                return window.btoa(binary);
+            };
 
             
         </script>
