@@ -25,7 +25,7 @@ const config = require('./config');
 mongoose.connect(config.MONGODB_URL, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const InputSchema = new Schema({
-    img: Buffer
+    img: {data: Buffer, contentType: String}
 });
 const HelloModel = mongoose.model('input', InputSchema)
 
