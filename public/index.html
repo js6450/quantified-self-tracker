@@ -36,6 +36,7 @@
                             let div = document.createElement('div');
                             div.id = thisDate;
                             div.setAttribute('class', 'day');
+                            div.style.background = "rgba(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ", 0.2)"
                             document.getElementById('inputDivs').appendChild(div);
 
                             let date = document.createElement('p');
