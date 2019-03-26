@@ -2,13 +2,29 @@ body{
     font-family: 'Noto Sans', sans-serif;
 }
 
+#inputDivs{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
 .day{
     width: 33%;
     display: inline-table;
-    margin: 1.5em;
+    margin: 1em;
+    background: aliceblue;
+    padding: 1em;
+    border-radius: 1.5em;
+}
+
+.date, .img-date, .img-loc{
+    text-align: center;
 }
 
 .date{
-    text-align: center;
     font-weight: bold;
+}
+
+img{
+    display: block;
+    margin: auto;
 }
