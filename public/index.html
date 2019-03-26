@@ -42,6 +42,11 @@
                             date.setAttribute('class', 'date');
                             date.innerHTML = thisDateArray[0] + " " + thisDateArray[1] + " " + thisDateArray[2];
                             div.appendChild(date);
+
+                            let steps = document.createElement('p');
+                            steps.setAttribute('class', 'steps');
+                            steps.innerHTML = "👣 " + inputs[i].steps + " steps 👣";
+                            div.appendChild(steps);
                         }
 
                         baseToImage(inputs[i], thisDate);
