@@ -3,9 +3,11 @@
         <title>Self Tracker from My Phone</title>
     </head>
     <body>
+        <div id="inputDivs"></div>
 
         <script>
             let inputs;
+            let divNum = 0;
             
             /**
              * When the window loads, build the page
@@ -21,23 +23,43 @@
                     //console.log(result);
                     inputs = result;
 
-                    for(let i = 0; i < inputs.length; i++){
-                        baseToImage(inputs[i].img);
+                    for(let i = 0; i < inputs.length; i+=3){
+                        let div = document.createElement('div');
+                        div.id = divNum;
+
+                        baseToImage(inputs[i], div.id);
+                        baseToImage(inputs[i + 1], div.id);
+                        baseToImage(inputs[i + 2], div.id);
+
+                        document.getElementById('inputDivs').appendChild(div);
+                        divNum++;
                     }
                 }).catch(err => {
                     return err;
                 })
             }
 
-            function baseToImage(bString){
+            function baseToImage(input, dest){
+                let bString = input.img;
                 let img = document.createElement('img');
                 img.width = 320;
                 img.height = 240;
                 img.src = "data:image/jpeg;base64," + bString;
-                document.body.appendChild(img);
+                document.getElementById(dest).appendChild(img);
+
+                let imgdate = input.imgDate;
+                let newDate = document.createElement('p');
+                newDate.addAttribute('class', 'date');
+                newDate.innerHTML = imgdate;
+                document.getElementById(dest).appendChild(imgdate);
+
+                let imgloc = input.imgLoc;
+                let newloc = document.createElement('p');
+                newloc.addAttribute('class', 'loc');
+                newloc.innerHTML = imgloc;
+                document.getElementById(dest).appendChild(imgloc);
             }
 
-            
         </script>
     </body>
 </html>

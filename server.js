@@ -38,7 +38,8 @@ const Schema = mongoose.Schema;
 const InputSchema = new Schema({
     date: String,
     img: String,
-    imgLoc: String
+    imgLoc: String,
+    imgDate: String
 });
 const HelloModel = mongoose.model('input', InputSchema)
 
