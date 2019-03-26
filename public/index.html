@@ -27,13 +27,18 @@
                         let thisDateArray = inputs[i].date.split(' ');
                         console.log(thisDateArray);
 
-                        let thisDate = thisDateArray[0] + "-" + thisDateArray[1] + "-" + thisDateArray[2];
+                        let thisDate = thisDateArray[0] + "-" + thisDateArray[1].slice(0, 2) + "-" + thisDateArray[2];
                         if(dates.indexOf(thisDate) < 0){
                             dates.push(thisDate);
 
                             let div = document.createElement('div');
                             div.id = thisDate;
                             document.getElementById('inputDivs').appendChild(div);
+
+                            let date = document.createElement('p');
+                            date.setAttribute('class', 'date');
+                            date.innerHTML = thisDateArray[0] + " " + thisDateArray[1] + " " + thisDateArray[2];
+                            div.appendChild(date);
                         }
 
                         baseToImage(inputs[i], thisDate);
@@ -46,26 +51,26 @@
 
             function baseToImage(input, dest){
 
-                console.log(input);
+                let entry = document.createElement('div');
+                entry.setAttribute('class', 'entry');
+                document.getElementById(dest).appendChild(entry);
 
                 let bString = input.img;
                 let img = document.createElement('img');
                 img.width = 320;
                 img.height = 240;
                 img.src = "data:image/jpeg;base64," + bString;
-                document.getElementById(dest).appendChild(img);
-
-                console.log(input.imgDate);
+                entry.appendChild(img);
 
                 let newDate = document.createElement('P');
-                newDate.setAttribute('class', 'date');
+                newDate.setAttribute('class', 'img-date');
                 newDate.innerHTML = input.imgDate;
-                document.getElementById(dest).appendChild(newDate);
+                entry.appendChild(newDate);
 
                 let newLoc = document.createElement('p');
-                newLoc.setAttribute('class', 'loc');
+                newLoc.setAttribute('class', 'img-loc');
                 newLoc.innerHTML = input.imgLoc;
-                document.getElementById(dest).appendChild(newLoc);
+                entry.appendChild(newLoc);
 
             }
 
