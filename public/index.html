@@ -7,6 +7,7 @@
 
         <script>
             let inputs;
+            let dates = [];
             let divNum = 0;
             
             /**
@@ -25,18 +26,33 @@
 
                     for(let i = 0; i < inputs.length; i+=3){
                         let div = document.createElement('div');
+                        if(inputs[i].date){
+                            let thisDateArray = inputs[i].date.split(' ');
+                            let thisDate = thisDateArray[0] + "-" + thisDateArray[1] + "-" + thisDateArray[2];
+                            if(indexOf(thisDate) < 0){
+                                dates.push(thisDate);
+                            }
+                        }
                         div.id = divNum;
+                        document.getElementById('inputDivs').appendChild(div);
 
                         baseToImage(inputs[i], div.id);
                         baseToImage(inputs[i + 1], div.id);
                         baseToImage(inputs[i + 2], div.id);
 
-                        document.getElementById('inputDivs').appendChild(div);
                         divNum++;
                     }
                 }).catch(err => {
                     return err;
                 })
+            }
+
+            function baseToImage(bString){
+                let img = document.createElement('img');
+                img.width = 320;
+                img.height = 240;
+                img.src = "data:image/jpeg;base64," + bString;
+                document.body.appendChild(img);
             }
 
             function baseToImage(input, dest){
