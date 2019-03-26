@@ -21,9 +21,14 @@
                     inputs = result;
 
                     for(let i = 0; i < inputs.length; i++){
+
+                        console.log('add input of index ' + i);
+
                         let thisDateArray = inputs[i].date.split(' ');
+                        console.log(thisDateArray);
+
                         let thisDate = thisDateArray[0] + "-" + thisDateArray[1] + "-" + thisDateArray[2];
-                        if(indexOf(thisDate) < 0){
+                        if(dates.indexOf(thisDate) < 0){
                             dates.push(thisDate);
 
                             let div = document.createElement('div');
