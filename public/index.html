@@ -25,20 +25,20 @@
                     inputs = result;
 
                     for(let i = 0; i < inputs.length; i++){
-                        let div = document.createElement('div');
-                        if(inputs[i].date){
-                            let thisDateArray = inputs[i].date.split(' ');
-                            let thisDate = thisDateArray[0] + "-" + thisDateArray[1] + "-" + thisDateArray[2];
-                            if(indexOf(thisDate) < 0){
-                                dates.push(thisDate);
-                            }
-                        }
-                        div.id = divNum;
-                        document.getElementById('inputDivs').appendChild(div);
+                        // let div = document.createElement('div');
+                        // if(inputs[i].date){
+                        //     let thisDateArray = inputs[i].date.split(' ');
+                        //     let thisDate = thisDateArray[0] + "-" + thisDateArray[1] + "-" + thisDateArray[2];
+                        //     if(indexOf(thisDate) < 0){
+                        //         dates.push(thisDate);
+                        //     }
+                        // }
+                        // div.id = divNum;
+                        // document.getElementById('inputDivs').appendChild(div);
 
                         baseToImage(inputs[i]);
 
-                        divNum++;
+                        //divNum++;
                     }
                 }).catch(err => {
                     return err;
@@ -53,7 +53,7 @@
                 document.body.appendChild(img);
             }
 
-            function baseToImage(input, dest){
+            function baseToImage(input){
                 let bString = input.img;
                 let img = document.createElement('img');
                 img.width = 320;
