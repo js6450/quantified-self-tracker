@@ -72,7 +72,7 @@
 
                 let newDate = document.createElement('P');
                 newDate.setAttribute('class', 'img-date');
-                newDate.innerHTML = input.imgDate;
+                newDate.innerHTML = input.imgDate.split(' at ')[1];
                 entry.appendChild(newDate);
 
                 let newLoc = document.createElement('p');
