@@ -8,7 +8,7 @@ body{
 }
 
 .day{
-    width: 33%;
+    width: 340px;
     display: inline-table;
     margin: 1em;
     background: aliceblue;
