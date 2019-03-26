@@ -64,21 +64,17 @@
                 img.src = "data:image/jpeg;base64," + bString;
                 document.body.appendChild(img);
 
-                if(input.imgDate){
-                    let imgdate = input.imgDate;
-                    let newDate = document.createElement('P');
-                    newDate.setAttribute('class', 'date');
-                    newDate.innerHTML = imgdate;
-                    document.body.appendChild(imgdate);
-                }
+                console.log(input.imgDate);
 
-                if(input.imgLoc){
-                    let imgloc = input.imgLoc;
-                    let newloc = document.createElement('p');
-                    newloc.setAttribute('class', 'loc');
-                    newloc.innerHTML = imgloc;
-                    document.body.appendChild(imgloc);
-                }
+                let newDate = document.createElement('P');
+                newDate.setAttribute('class', 'date');
+                newDate.innerHTML = input.imgDate;
+                document.body.appendChild(newDate);
+
+                let newLoc = document.createElement('p');
+                newLoc.setAttribute('class', 'loc');
+                newLoc.innerHTML = input.imgLoc;
+                document.body.appendChild(newLoc);
 
             }
 
