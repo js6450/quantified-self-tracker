@@ -67,7 +67,7 @@
                 if(input.imgDate){
                     let imgdate = input.imgDate;
                     let newDate = document.createElement('P');
-                    newDate.addAttribute('class', 'date');
+                    newDate.setAttribute('class', 'date');
                     newDate.innerHTML = imgdate;
                     document.body.appendChild(imgdate);
                 }
@@ -75,7 +75,7 @@
                 if(input.imgLoc){
                     let imgloc = input.imgLoc;
                     let newloc = document.createElement('p');
-                    newloc.addAttribute('class', 'loc');
+                    newloc.setAttribute('class', 'loc');
                     newloc.innerHTML = imgloc;
                     document.body.appendChild(imgloc);
                 }
